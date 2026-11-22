@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AXIOM // Public Commitment & Sneak Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- KaTeX for crisp textbook math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            obsidian: '#06070a',
+            chalk: '#f4f4f5',
+            cobalt: '#2563eb',
+            amberforge: '#f59e0b',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #06070a;
+      color: #f4f4f5;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    .brutal-card {
+      background: rgba(11, 13, 19, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+    }
+    .amber-glow {
+      background: radial-gradient(circle at 50% -10%, rgba(245, 158, 11, 0.16), rgba(37, 99, 235, 0.12) 45%, transparent 75%);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-amberforge selection:text-obsidian overflow-x-hidden">
+
+  <!-- Ambient Top Spotlight -->
+  <div class="fixed inset-0 amber-glow pointer-events-none z-0"></div>
+
+  <!-- Top Announcement Banner -->
+  <div class="relative z-40 bg-amberforge text-obsidian text-xs font-mono font-bold tracking-wider uppercase py-2 px-4 text-center">
+    SHIPS TO PUBLIC BETA IN <span id="top-countdown">14D : 08H : 42M</span> — NO RETREAT. BUILT IN PUBLIC.
+  </div>
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-30 border-b border-white/10 bg-obsidian/85 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <!-- Brand Mark -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-lg bg-chalk text-obsidian flex items-center justify-center font-mono font-black text-lg tracking-tighter group-hover:bg-amberforge transition-colors">
+          ∑
+        </div>
+        <div class="flex items-baseline gap-2">
+          <span class="font-black text-xl tracking-tight text-chalk">AXIOM</span>
+          <span class="font-mono text-[10px] uppercase px-1.5 py-0.5 rounded bg-white/10 text-zinc-400">v0.1-alpha</span>
+        </div>
+      </a>
+
+      <!-- Nav Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono uppercase tracking-wider text-zinc-400">
+        <a href="#ideology" class="hover:text-chalk transition-colors">01 // Manifesto</a>
+        <a href="#preview" class="hover:text-chalk transition-colors">02 // Sneak Preview</a>
+        <a href="#build-log" class="hover:text-chalk transition-colors">03 // Build Log</a>
+      </nav>
+
+      <!-- Share Button -->
+      <button onclick="copyShareLink()" class="px-3.5 py-2 rounded-lg border border-white/15 hover:border-amberforge/70 bg-white/5 hover:bg-white/10 text-chalk font-mono text-xs font-semibold flex items-center gap-2 transition-all active:scale-95">
+        <svg class="w-3.5 h-3.5 text-amberforge" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+        </svg>
+        <span>Share Link</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section class="pt-14 pb-20 md:pt-24 md:pb-28 px-4 sm:px-6">
+      <div class="max-w-4xl mx-auto text-center space-y-8">
+        
+        <!-- Public Commitment Badge -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-amberforge/40 bg-amberforge/10 text-amberforge font-mono text-xs font-bold tracking-widest uppercase">
+          <span class="w-2 h-2 rounded-full bg-amberforge animate-ping"></span>
+          PUBLIC COMMITMENT // SHIPPING SOON
+        </div>
+
+        <!-- Bold Editorial Headline -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-chalk leading-[1.05]">
+          We burned the bridges. <br class="hidden sm:block" />
+          Now we build the math tool <span class="text-transparent bg-clip-text bg-gradient-to-r from-amberforge via-amber-300 to-blue-400">students actually deserve.</span>
+        </h1>
+
+        <!-- Ideology Subheadline -->
+        <p class="text-base sm:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed font-normal">
+          Math shouldn’t be locked behind $15/month paywalls or reduced to blind answer-copying. 
+          <strong class="text-chalk font-semibold">AXIOM</strong> combines instant symbolic calculus, visual statistics, and camera-based step-by-step work checking—built by a student, free to use.
+        </p>
+
+        <!-- Waitlist & Shareable Teaser Box -->
+        <div class="max-w-xl mx-auto pt-2">
+          <form id="waitlist-form" onsubmit="handleWaitlistSubmit(event)" class="flex flex-col sm:flex-row gap-3">
+            <input 
+              id="waitlist-email"
+              type="email" 
+              required
+              placeholder="Enter your school or personal email..." 
+              class="flex-1 px-4 py-3.5 rounded-xl bg-zinc-900/90 border border-white/15 focus:border-blue-500 text-chalk placeholder-zinc-500 text-sm font-mono focus:outline-none transition-colors"
+            />
+            <button type="submit" class="px-6 py-3.5 rounded-xl bg-cobalt hover:bg-blue-500 text-white font-bold text-sm tracking-wide shadow-lg shadow-blue-600/30 transition-all active:scale-95 whitespace-nowrap">
+              Claim Early Access →
+            </button>
+          </form>
+
+          <!-- Confirmation Message (Hidden until submit) -->
+          <div id="waitlist-success" class="hidden mt-3 p-3.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono text-left flex items-center justify-between gap-3">
+            <span>✓ You're locked in on the beta list. Share the announcement to move up the queue.</span>
+            <button onclick="copyShareLink()" class="px-2.5 py-1 rounded bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-200 font-bold shrink-0">
+              Copy Link
+            </button>
+          </div>
+
+          <!-- Spot Counter & One-Click Shareable Teaser Link -->
+          <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-zinc-400 px-1">
+            <div class="flex items-center gap-2">
+              <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span><strong id="spots-claimed" class="text-chalk">142</strong> / 500 founding beta spots claimed</span>
+            </div>
+            <button type="button" onclick="copyShareLink()" class="text-amberforge hover:underline flex items-center gap-1.5 font-semibold">
+              <span>Copy Shareable Teaser Link</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SNEAK PREVIEW SANDBOX SECTION -->
+    <section id="preview" class="py-16 px-4 sm:px-6 border-t border-white/10">
+      <div class="max-w-5xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-widest text-blue-400 font-bold">02 // Interactive Sneak Preview</span>
+            <h2 class="text-2xl sm:text-4xl font-black text-chalk mt-1">Test the engine before launch.</h2>
+          </div>
+          <p class="text-xs sm:text-sm text-zinc-400 max-w-md font-mono">
+            Click a mode below to preview how AXIOM breaks down calculus, statistics, and handwritten student mistakes.
+          </p>
+        </div>
+
+        <!-- Sandbox Window -->
+        <div class="brutal-card rounded-2xl overflow-hidden">
+          <!-- Window Top Bar -->
+          <div class="px-4 py-3 bg-white/[0.03] border-b border-white/10 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+              <span class="ml-2 font-mono text-xs text-zinc-400">axiom-engine://preview-sandbox</span>
+            </div>
+
+            <!-- Interactive Sample Switcher -->
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="loadSample('derivative', this)" class="sample-tab px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-cobalt text-white transition-all">
+                d/dx (x³·sin x)
+              </button>
+              <button onclick="loadSample('integral', this)" class="sample-tab px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-white/5 text-zinc-400 hover:text-chalk transition-all">
+                ∫₀² (3x² + 2x) dx
+              </button>
+              <button onclick="loadSample('snapcheck', this)" class="sample-tab px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-white/5 text-zinc-400 hover:text-chalk transition-all">
+                📷 Snap-Check Mistake
+              </button>
+              <button onclick="loadSample('stats', this)" class="sample-tab px-3 py-1.5 rounded-lg font-mono text-xs font-bold bg-white/5 text-zinc-400 hover:text-chalk transition-all">
+                σ Normal Distribution
+              </button>
+            </div>
+          </div>
+
+          <!-- Sandbox Content Split -->
+          <div class="grid grid-cols-1 lg:grid-cols-12">
+            <!-- Input / Problem Pane -->
+            <div class="lg:col-span-5 p-6 sm:p-8 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-between bg-zinc-950/60">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between">
+                  <span id="sample-tag" class="px-2.5 py-1 rounded bg-blue-500/15 text-blue-400 font-mono text-[11px] font-bold uppercase">
+                    Symbolic Calculus
+                  </span>
+                  <span class="font-mono text-[11px] text-zinc-500">Local Client Engine</span>
+                </div>
+
+                <div>
+                  <div class="text-xs font-mono text-zinc-500 uppercase mb-2">Input Expression</div>
+                  <div id="sample-input-math" class="p-4 rounded-xl bg-obsidian border border-white/10 text-xl sm:text-2xl text-chalk overflow-x-auto">
+                    <!-- Rendered via KaTeX -->
+                  </div>
+                </div>
+
+                <p id="sample-context" class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
+                  Product rule differentiation computed symbolically in your browser with zero server round-trips.
+                </p>
+              </div>
+
+              <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-zinc-500">
+                <span>Latency: <strong class="text-emerald-400">4ms</strong></span>
+                <span>API Cost: <strong class="text-chalk">$0.00</strong></span>
+              </div>
+            </div>
+
+            <!-- Step-by-Step Reasoning Output Pane -->
+            <div class="lg:col-span-7 p-6 sm:p-8 space-y-5">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs uppercase tracking-wider text-amberforge font-bold">Step-by-Step Breakdown</span>
+                <span class="font-mono text-xs text-zinc-500">Axiom Logic v0.1</span>
+              </div>
+
+              <!-- Dynamic Steps Container -->
+              <div id="sample-steps" class="space-y-3">
+                <!-- Populated by JS -->
+              </div>
+
+              <!-- Final Result Box -->
+              <div class="p-4 rounded-xl bg-blue-950/30 border border-blue-500/30">
+                <div class="font-mono text-[11px] uppercase tracking-wider text-blue-300 mb-1">Verified Result</div>
+                <div id="sample-final-math" class="text-lg sm:text-xl text-chalk font-bold overflow-x-auto">
+                  <!-- Rendered via KaTeX -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE IDEOLOGY / MANIFESTO SECTION -->
+    <section id="ideology" class="py-20 px-4 sm:px-6 border-t border-white/10 bg-zinc-950/50">
+      <div class="max-w-6xl mx-auto">
+        <div class="max-w-2xl mb-14 space-y-3">
+          <span class="font-mono text-xs uppercase tracking-widest text-amberforge font-bold">01 // The Manifesto</span>
+          <h2 class="text-3xl sm:text-5xl font-black text-chalk tracking-tight">Why we’re building AXIOM.</h2>
+          <p class="text-zinc-400 text-sm sm:text-base">
+            Sun Tzu burned his bridges so his army could only move forward. This page is our public stake in the ground.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Pillar 01 -->
+          <div class="brutal-card rounded-2xl p-7 flex flex-col justify-between hover:border-amberforge/50 transition-colors">
+            <div>
+              <div class="font-mono text-xs font-bold text-amberforge mb-4">01 / UNDERSTANDING OVER SHORTCUTS</div>
+              <h3 class="text-xl font-extrabold text-chalk mb-3">Catch the mistake, don’t just copy the answer.</h3>
+              <p class="text-sm text-zinc-400 leading-relaxed">
+                Spitting out a final number doesn't save you on test day. AXIOM shows the underlying theorem or rule at every step—and lets you snap a photo of your handwritten work to pinpoint the exact line where a sign error happened.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-zinc-500">
+              Built for real conceptual mastery
+            </div>
+          </div>
+
+          <!-- Pillar 02 -->
+          <div class="brutal-card rounded-2xl p-7 flex flex-col justify-between hover:border-blue-500/50 transition-colors">
+            <div>
+              <div class="font-mono text-xs font-bold text-blue-400 mb-4">02 / ZERO PAYWALL GATEKEEPING</div>
+              <h3 class="text-xl font-extrabold text-chalk mb-3">No blurred steps when finals week hits.</h3>
+              <p class="text-sm text-zinc-400 leading-relaxed">
+                Legacy math apps hook you in and lock step-by-step solutions behind $15/month subscriptions right before midterms. By running symbolic algebra, calculus, and stats engines directly in your browser, AXIOM stays fast, private, and free.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-zinc-500">
+              Client-first architecture
+            </div>
+          </div>
+
+          <!-- Pillar 03 / Build Log -->
+          <div id="build-log" class="brutal-card rounded-2xl p-7 flex flex-col justify-between hover:border-emerald-500/50 transition-colors">
+            <div>
+              <div class="font-mono text-xs font-bold text-emerald-400 mb-4">03 / BUILT IN PUBLIC</div>
+              <h3 class="text-xl font-extrabold text-chalk mb-4">Live Engineering Log</h3>
+              <ul class="space-y-3 text-xs font-mono">
+                <li class="flex items-center justify-between p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
+                  <span class="text-chalk">Symbolic Calculus Engine</span>
+                  <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">READY</span>
+                </li>
+                <li class="flex items-center justify-between p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                  <span class="text-chalk">Stats & Distributions</span>
+                  <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">IN PROGRESS</span>
+                </li>
+                <li class="flex items-center justify-between p-2.5 rounded-lg bg-blue-500/10 border border-blue-500/20">
+                  <span class="text-chalk">Snap-and-Check Scanner</span>
+                  <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">NEXT</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-6 pt-4 border-t border-white/10 font-mono text-xs text-zinc-500">
+              Updated weekly until v1.0 launch
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-12 px-4 sm:px-6 bg-obsidian">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="text-center sm:text-left space-y-1">
+        <div class="font-black text-lg tracking-tight text-chalk">AXIOM <span class="font-mono text-xs font-normal text-zinc-500">// Student-Built Math Engine</span></div>
+        <p class="font-mono text-xs text-zinc-500">Build Status: <span class="text-emerald-400">Active Development (Public Teaser v0.1)</span></p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <button onclick="copyShareLink()" class="px-4 py-2.5 rounded-xl bg-chalk hover:bg-amberforge text-obsidian font-mono text-xs font-bold transition-colors flex items-center gap-2">
+          <span>Share Announcement</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" /></svg>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST NOTIFICATION FOR COPY LINK -->
+  <div id="copy-toast" class="fixed bottom-6 right-6 z-50 translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="px-4 py-3 rounded-xl bg-chalk text-obsidian font-mono text-xs font-bold shadow-2xl flex items-center gap-2.5 border border-amberforge">
+      <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+      <span id="toast-message">Shareable teaser link copied to clipboard!</span>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE SANDBOX, WAITLIST & SHARE SCRIPT -->
+  <script>
+    // --- Sneak Preview Sandbox Data ---
+    const samples = {
+      derivative: {
+        tag: 'Symbolic Calculus',
+        inputTex: '\\frac{d}{dx}\\left(x^3 \\cdot \\sin(x)\\right)',
+        context: 'Product rule differentiation computed symbolically in your browser with zero server round-trips.',
+        steps: [
+          {
+            label: 'Step 1 — Identify Product Rule',
+            desc: 'Apply \\frac{d}{dx}[u \\cdot v] = u\'v + uv\' where u = x^3 and v = \\sin(x).'
+          },
+          {
+            label: 'Step 2 — Differentiate Components',
+            desc: 'Power rule gives u\' = 3x^2, and trig derivative gives v\' = \\cos(x).'
+          },
+          {
+            label: 'Step 3 — Combine & Factor',
+            desc: 'Substitute back: 3x^2\\sin(x) + x^3\\cos(x) = x^2(3\\sin(x) + x\\cos(x)).'
+          }
+        ],
+        finalTex: 'x^2\\left(3\\sin(x) + x\\cos(x)\\right)'
+      },
+      integral: {
+        tag: 'Definite Integral',
+        inputTex: '\\int_{0}^{2} \\left(3x^2 + 2x\\right) dx',
+        context: 'Evaluates antiderivatives term-by-term and applies the Fundamental Theorem of Calculus.',
+        steps: [
+          {
+            label: 'Step 1 — Find Antiderivative F(x)',
+            desc: 'Apply reverse power rule: \\int 3x^2 dx = x^3 and \\int 2x dx = x^2.'
+          },
+          {
+            label: 'Step 2 — Evaluate Bounds [0, 2]',
+            desc: 'Compute F(2) - F(0) = (2^3 + 2^2) - (0^3 + 0^2).'
+          }
+        ],
+        finalTex: '8 + 4 - 0 = 12'
+      },
+      snapcheck: {
+        tag: '📷 Snap-and-Check Work',
+        inputTex: '\\text{Student Line 2: } -2(x - 4) = -2x - 8',
+        context: 'Upload a photo of your handwritten homework—AXIOM finds where your algebra drifted without spoiling the whole problem.',
+        steps: [
+          {
+            label: 'Line 1 — Original Equation (Valid)',
+            desc: '3x - 2(x - 4) = 15'
+          },
+          {
+            label: '⚠️ Line 2 — Sign Distribution Alert',
+            desc: 'Multiplying -2 by -4 gives +8, not -8. Check your sign before solving for x.'
+          }
+        ],
+        finalTex: '3x - 2x + 8 = 15 \\implies x = 7'
+      },
+      stats: {
+        tag: 'Statistics & Probability',
+        inputTex: 'X \\sim \\mathcal{N}(\\mu = 78,\\, \\sigma = 6),\\; P(X > 87)',
+        context: 'Instant Z-score standardization and tail probability lookup for AP Stats & college intro courses.',
+        steps: [
+          {
+            label: 'Step 1 — Standardize to Z-Score',
+            desc: 'Z = \\frac{87 - 78}{6} = \\frac{9}{6} = 1.50'
+          },
+          {
+            label: 'Step 2 — Upper Tail Area',
+            desc: 'Using standard normal CDF: 1 - \\Phi(1.50) = 1 - 0.9332.'
+          }
+        ],
+        finalTex: 'P(X > 87) \\approx 0.0668\\; (6.68\\%)'
+      }
+    };
+
+    function renderTexSafe(element, texString) {
+      if (window.katex) {
+        try {
+          katex.render(texString, element, { throwOnError: false, displayMode: false });
+          return;
+        } catch (e) {}
+      }
+      element.textContent = texString;
+    }
+
+    function loadSample(key, btnEl) {
+      const data = samples[key];
+      if (!data) return;
+
+      // Update active tab styles
+      if (btnEl) {
+        document.querySelectorAll('.sample-tab').forEach(tab => {
+          tab.classList.remove('bg-cobalt', 'text-white');
+          tab.classList.add('bg-white/5', 'text-zinc-400');
+        });
+        btnEl.classList.add('bg-cobalt', 'text-white');
+        btnEl.classList.remove('bg-white/5', 'text-zinc-400');
+      }
+
+      document.getElementById('sample-tag').textContent = data.tag;
+      document.getElementById('sample-context').textContent = data.context;
+      renderTexSafe(document.getElementById('sample-input-math'), data.inputTex);
+      renderTexSafe(document.getElementById('sample-final-math'), data.finalTex);
+
+      const stepsContainer = document.getElementById('sample-steps');
+      stepsContainer.innerHTML = '';
+      data.steps.forEach(step => {
+        const div = document.createElement('div');
+        div.className = 'p-3.5 rounded-xl bg-white/[0.03] border border-white/10 space-y-1';
+        div.innerHTML = `
+          <div class="font-mono text-xs font-bold text-chalk">${step.label}</div>
+          <div class="font-mono text-xs text-zinc-400 leading-relaxed">${step.desc}</div>
+        `;
+        stepsContainer.appendChild(div);
+      });
+    }
+
+    // --- Waitlist Signup Logic (Local State) ---
+    let spotsCount = parseInt(localStorage.getItem('axiom_spots_count') || '142', 10);
+    document.getElementById('spots-claimed').textContent = spotsCount;
+
+    function handleWaitlistSubmit(e) {
+      e.preventDefault();
+      const emailInput = document.getElementById('waitlist-email');
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      // Increment spots only once per browser session
+      if (!localStorage.getItem('axiom_joined')) {
+        spotsCount += 1;
+        localStorage.setItem('axiom_spots_count', String(spotsCount));
+        localStorage.setItem('axiom_joined', email);
+        document.getElementById('spots-claimed').textContent = spotsCount;
+      }
+
+      emailInput.value = '';
+      document.getElementById('waitlist-success').classList.remove('hidden');
+      showToast('Beta spot reserved! Share your link below.');
+    }
+
+    // --- Copy Shareable Teaser Link (iFrame-safe fallback) ---
+    function copyShareLink() {
+      const shareUrl = window.location.href.startsWith('http')
+        ? window.location.href
+        : 'https://axiom-math.vercel.app';
+
+      const tempInput = document.createElement('input');
+      tempInput.value = shareUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast('Shareable teaser link copied to clipboard!');
+      } catch (err) {
+        showToast('Ready to share: ' + shareUrl);
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('copy-toast');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Initialize default sample once KaTeX loads
+    window.addEventListener('load', () => {
+      loadSample('derivative', null);
+    });
+  </script>
+</body>
+</html>
